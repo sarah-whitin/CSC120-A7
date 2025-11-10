@@ -58,7 +58,7 @@ by doing the following:
 private ArrayList<Student> residents; // The <Student> tells Java what kind of data we plan to store IN the ArrayList
 private boolean hasDiningRoom;
 ```
-Modify the `House` **constructor** to initialize `residents` to a `new ArrayList<Student>()`, as well as to set `hasDiningRoom` to indicate whether or not the house has a dining room. You'll have to pass this value in as a parameter to the constructor, and don't forget to `import java.util.ArrayList`!
+Modify the `House` **constructor** to initialize `residents` to a `new ArrayList<Student>()`, as well as to set `hasDiningRoom` to indicate whether or not the house has a dining room. You'll have to pass this value in as a parameter to the constructor, please add it as the **last** parameter the constructor takes. And don't forget to `import java.util.ArrayList`!
 
 ---
 2. Make sure `House implements HouseRequirements`. Details for required methods are below. 
