@@ -35,7 +35,7 @@ public class Library extends Building implements LibraryRequirements {
   }
     
   /**
-   * Updates title to map to boolean false, or checks out the book so it is no longer available
+   * Updates title to map to boolean false if book is available, otherwise prints a message that the book is already checked out.
    * @param title string, title of book to be checked out
    */
   public void checkOut(String title){
@@ -49,8 +49,8 @@ public class Library extends Building implements LibraryRequirements {
   }
 
   /**
-   * Updates title to map to boolean true, or returns  the book so it is available
-   * @title string, title of book to be returned out
+   * Updates title to map to boolean true if book is checked out, otherwise prints a message that the book is not checked out.
+   * @param title string, title of book to be returned out
    */
   public void returnBook(String title){
     boolean status = this.isAvailable(title);
@@ -62,14 +62,18 @@ public class Library extends Building implements LibraryRequirements {
   } 
 
   /**
-   * 
+   * See if book is in collection or not
+   * @param title string, title of book to evaluate if is in collection or not
+   * @return boolean, true if book is in collectioni, false if not
    */
   public boolean containsTitle(String title){
     return this.collection.containsKey(title);
   }
 
   /**
-   * 
+   * See if book is available or not
+   * @param title string, title of book to evaluate availability of
+   * @return boolean, true if book is available for checkout, false if not
    */
   public boolean isAvailable(String title){
     if (this.containsTitle(title) == true){
@@ -81,7 +85,7 @@ public class Library extends Building implements LibraryRequirements {
   }
 
   /**
-   * 
+   * Prints all titles and if they are available or checked out.
    */
   public void printCollection(){
     // for key in keys
@@ -106,5 +110,4 @@ public class Library extends Building implements LibraryRequirements {
     // System.out.println(neilson.isAvailable("Dr. Seuss"));
     neilson.printCollection();
   }
-  
 }
