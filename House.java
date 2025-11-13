@@ -8,7 +8,7 @@ public class House extends Building implements HouseRequirements{
   private boolean hasDiningRoom;
 
   /**
-   * Constructor 
+   * Constructor
    * @param d boolean, if the house has a dining room or not
    */
   public House(boolean d) {

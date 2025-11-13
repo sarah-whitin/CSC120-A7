@@ -8,7 +8,7 @@ public class Library extends Building implements LibraryRequirements {
   private Hashtable<String, Boolean> collection;
   
   /**
-   * Constructor
+   * Constructor, creates empty collection
    */
   public Library() {
     this.collection = new Hashtable<String, Boolean>();
