@@ -62,7 +62,18 @@ public class House extends Building implements HouseRequirements{
   }
 
   public static void main(String[] args) {
-    new House(true);
+    House wilson = new House(true);
+    System.out.println(wilson.hasDiningRoom());
+    Student anna = new Student("anna", null, 2026);
+    Student sox = new Student("sox", null, 2027);
+    wilson.moveIn(anna);
+    wilson.moveIn(sox);
+    System.out.println(wilson.nResidents());
+    System.out.println(wilson.isResident(sox));
+    System.out.println(wilson.isResident(anna));
+    wilson.moveOut(sox);
+    System.out.println(wilson.isResident(sox));
+    System.out.println(wilson.nResidents());
   }
 
 }
