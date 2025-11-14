@@ -9,8 +9,12 @@ public class Library extends Building implements LibraryRequirements {
   
   /**
    * Constructor, creates empty collection
+   * @param name string, the name of the building
+   * @param address string, the address of the building
+   * @param nFloors int, the number of floors of the building
    */
-  public Library() {
+  public Library(String name, String address, int nFloors) {
+    super(name, address, nFloors);
     this.collection = new Hashtable<String, Boolean>();
     System.out.println("You have built a library: 📖");
   }
@@ -101,7 +105,7 @@ public class Library extends Building implements LibraryRequirements {
   }
 
   public static void main(String[] args) {
-    Library neilson = new Library();
+    Library neilson = new Library("Neilson", "1 Neilson Drive", 5);
     neilson.addTitle("Dr. Seuss");
     neilson.addTitle("Harry Potter");
     neilson.checkOut("Dr. Seuss");
