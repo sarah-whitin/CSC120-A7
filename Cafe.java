@@ -22,6 +22,12 @@ public class Cafe extends Building implements CafeRequirements {
         this.nCups = 2000;
     }
 
+    /**
+     * turns order into an ArrayList of Integers
+     * @param size int, number of ounces of coffee in order
+     * @param nSugarPackets, int number of sugar packets in order
+     * @param nCreams int, number of creams in order
+     */
     private ArrayList<Integer> getOrder(int size, int nSugarPackets, int nCreams){
         ArrayList<Integer> order = new ArrayList<Integer>();
         order.add(size);
@@ -32,6 +38,12 @@ public class Cafe extends Building implements CafeRequirements {
         return order;
     }
 
+    /**
+     * turns stocked items into an ArrayList of Integers
+     * @param size int, number of ounces of coffee in inventory
+     * @param nSugarPackets, int number of sugar packets in inventory
+     * @param nCreams int, number of creams in inventory
+     */
     private ArrayList<Integer> getInventory(){
         ArrayList<Integer> inventory = new ArrayList<Integer>();
         inventory.add(this.nCoffeeOunces);
@@ -42,7 +54,7 @@ public class Cafe extends Building implements CafeRequirements {
     }
     
     /**
-     * Decreases inventory by amount specified for each paramter and by one cup
+     * Decreases inventory by amount specified for each paramter and by one cup. If there is not enough left in stock to complete order, stock will be replinished.
      * @param size int, number of ounces of coffee in order
      * @param nSugarPackets, int number of sugar packets in order
      * @param nCreams int, number of creams in order
@@ -64,6 +76,13 @@ public class Cafe extends Building implements CafeRequirements {
         this.nCups = this.nCups - 1;
     }
 
+    /**
+     * Return stock to the values given as paramters 
+     * @param nCoffeeOunces int, number of coffee ounes to be in stock
+     * @param nSugarPackets int, number of sugar packets to have in stock
+     * @param nCreams int, number of creams to have in stock
+     * @param nCups int, number of cups to have in stock
+     */
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
         this.nCoffeeOunces = nCoffeeOunces;
         this.nSugarPackets = nSugarPackets;
