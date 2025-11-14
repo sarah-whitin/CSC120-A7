@@ -7,7 +7,6 @@ public class Cafe extends Building implements CafeRequirements {
     private int nSugarPackets;
     private int nCreams;
     private int nCups;
-    private ArrayList<Integer> inventory;
 
     /**
      * Constructor, sets default inventory
@@ -21,11 +20,25 @@ public class Cafe extends Building implements CafeRequirements {
         this.nSugarPackets = 1500;
         this.nCreams = 1500;
         this.nCups = 2000;
-        this.inventory = new ArrayList<>();
-        this.inventory.add(nCoffeeOunces);
-        this.inventory.add(nSugarPackets);
-        this.inventory.add(nCreams);
-        this.inventory.add(nCups);
+    }
+
+    private ArrayList<Integer> getOrder(int size, int nSugarPackets, int nCreams){
+        ArrayList<Integer> order = new ArrayList<Integer>();
+        order.add(size);
+        order.add(nSugarPackets);
+        order.add(nCreams);
+        int cups = 1;
+        order.add(cups);
+        return order;
+    }
+
+    private ArrayList<Integer> getInventory(){
+        ArrayList<Integer> inventory = new ArrayList<Integer>();
+        inventory.add(this.nCoffeeOunces);
+        inventory.add(this.nSugarPackets);
+        inventory.add(this.nCreams);
+        inventory.add(this.nCups);
+        return inventory;
     }
     
     /**
@@ -35,8 +48,13 @@ public class Cafe extends Building implements CafeRequirements {
      * @param nCreams int, number of creams in order
      */
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
+        ArrayList<Integer> order = getOrder(size, nSugarPackets, nCreams);
+        ArrayList<Integer> inventory = getInventory();
         for(int i = 0; i < inventory.size(); i++){
-            if (inventory.get(i) < 50){
+            int stock = inventory.get(i);
+            int request = order.get(i);
+            System.out.println(stock+" in relation to "+request);
+            if (stock - request < 0){
                 this.restock(20000, 1500, 1500, 2000);
             }
         }
@@ -51,9 +69,14 @@ public class Cafe extends Building implements CafeRequirements {
         this.nSugarPackets = nSugarPackets;
         this.nCreams = nCreams;
         this.nCups = nCups;
-    }    
+    }
     public static void main(String[] args) {
         Cafe compass = new Cafe("Compass Cafe", "1 Chapin Way", 3);
+        compass.sellCoffee(19000, 0, 0);
+        System.out.println(compass.nCoffeeOunces);
+        compass.sellCoffee(3000, 0, 0);
+        System.out.println(compass.nCoffeeOunces);
+        System.out.println(compass.nCups);
     }
     
 }
